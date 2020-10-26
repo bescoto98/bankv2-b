@@ -1,17 +1,13 @@
 package com.revature.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 
 import org.springframework.stereotype.Component;
 
@@ -30,20 +26,25 @@ public class Account {
 	private String approvedby;
 	private String createdon;
 	
+	@OneToOne(mappedBy="userid",fetch=FetchType.LAZY)
+	private User owner;
+	
 	public Account() {
 		super();
 	}
 
-	public Account(double balance, AccType type, AccStatus status, String approvedby, String createdon) {
+	public Account(double balance, AccType type, AccStatus status, String approvedby, String createdon, User owner) {
 		super();
 		this.balance = balance;
 		this.type = type;
 		this.status = status;
 		this.approvedby = approvedby;
 		this.createdon = createdon;
+		this.owner = owner;
 	}
 
-	public Account(int accountid, double balance, AccType type, AccStatus status, String approvedby, String createdon) {
+	public Account(int accountid, double balance, AccType type, AccStatus status, String approvedby, String createdon,
+			User owner) {
 		super();
 		this.accountid = accountid;
 		this.balance = balance;
@@ -51,6 +52,7 @@ public class Account {
 		this.status = status;
 		this.approvedby = approvedby;
 		this.createdon = createdon;
+		this.owner = owner;
 	}
 
 	public int getAccountid() {
@@ -77,6 +79,10 @@ public class Account {
 		return createdon;
 	}
 
+	public User getOwner() {
+		return owner;
+	}
+
 	public void setAccountid(int accountid) {
 		this.accountid = accountid;
 	}
@@ -101,6 +107,10 @@ public class Account {
 		this.createdon = createdon;
 	}
 
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -111,6 +121,7 @@ public class Account {
 		temp = Double.doubleToLongBits(balance);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((createdon == null) ? 0 : createdon.hashCode());
+		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
@@ -139,6 +150,11 @@ public class Account {
 				return false;
 		} else if (!createdon.equals(other.createdon))
 			return false;
+		if (owner == null) {
+			if (other.owner != null)
+				return false;
+		} else if (!owner.equals(other.owner))
+			return false;
 		if (status != other.status)
 			return false;
 		if (type != other.type)
@@ -149,8 +165,9 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [accountid=" + accountid + ", balance=" + balance + ", type=" + type + ", status=" + status
-				+ ", approvedby=" + approvedby + ", createdon=" + createdon + "]";
+				+ ", approvedby=" + approvedby + ", createdon=" + createdon + ", owner=" + owner + "]";
 	}
-
+	
+	
 	
 }
