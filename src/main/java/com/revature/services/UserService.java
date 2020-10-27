@@ -73,6 +73,8 @@ public class UserService {
 	
 	public Information findByOwner(User owner) {
 		
+		// 
+		
 		Information i = infodao.findByOwner(owner);
 		
 		/** to protect a user's ssn this code
