@@ -32,6 +32,16 @@ public class Account {
 	public Account() {
 		super();
 	}
+	
+	public Account(double balance, AccType type, AccStatus status, User owner) {
+		super();
+		this.balance = balance;
+		this.type = type;
+		this.status = status;
+		this.owner = owner;
+	}
+
+
 
 	public Account(double balance, AccType type, AccStatus status, String approvedby, String createdon, User owner) {
 		super();
