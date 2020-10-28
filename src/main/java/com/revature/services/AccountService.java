@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.models.AccStatus;
 import com.revature.models.Account;
 import com.revature.models.User;
 import com.revature.repositories.IAccountDAO;
 
+@Service
 public class AccountService {
 
 	private IAccountDAO accountdao;

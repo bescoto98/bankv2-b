@@ -3,6 +3,8 @@ package com.revature.models;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +20,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Component
 @Table
-@TableGenerator(name="usid",initialValue=1000,allocationSize=50)
+@TableGenerator(name="usid",initialValue=50,allocationSize=50)
 public class User {
 	
 	@Id
@@ -34,6 +36,7 @@ public class User {
 	
 	private String password;
 	
+	@Enumerated(EnumType.STRING)
 	private UserRole role;
 
 	public User() {
