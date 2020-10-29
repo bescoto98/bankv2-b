@@ -29,3 +29,11 @@ INSERT INTO INFORMATION(userid,ssn,address,city,state,zip,phone,email) VALUES(11
 INSERT INTO INFORMATION(userid,ssn,address,city,state,zip,phone,email) VALUES(112,'505226595','613 Orange Ave.','Orange','CA','99334','5219653663','veras@gmail.com');
 INSERT INTO INFORMATION(userid,ssn,address,city,state,zip,phone,email) VALUES(113,'555002365','614 Orange Ave.','Orange','CA','99334','5845698521','doe@gmail.com');
 INSERT INTO INFORMATION(userid,ssn,address,city,state,zip,phone,email) VALUES(114,'485662000','615 Orange Ave.','Orange','CA','99334','2851412563','oregano@gmail.com');
+
+INSERT INTO ACCOUNT(accountid,approvedby,balance,createdon,status,type,userid) VALUES(107,'Eagan Short',500.00,'10-15-2015','OPEN','CHECKING',107);
+INSERT INTO ACCOUNT(accountid,approvedby,balance,createdon,status,type,userid) VALUES(108,'Jerome Holder',700.00,'08-15-2012','OPEN','SAVINGS',111);
+INSERT INTO ACCOUNT(accountid,approvedby,balance,createdon,status,type,userid) VALUES(109,'Hamish Henry',458.00,'12-11-2013','OPEN','CHECKING',110);
+INSERT INTO ACCOUNT(accountid,approvedby,balance,createdon,status,type,userid) VALUES(110,'Carl Burgess',4568.44,'03-25-2014','OPEN','SAVINGS',111);
+INSERT INTO ACCOUNT(accountid,approvedby,balance,createdon,status,type,userid) VALUES(111,'Philip Bauer',45683.45,'02-23-2016','OPEN','CHECKING',106);
+INSERT INTO ACCOUNT(accountid,approvedby,balance,createdon,status,type,userid) VALUES(112,'Bradley Riggs',1200.23,'01-09-2017','OPEN','SAVINGS',114);
+INSERT INTO ACCOUNT(accountid,approvedby,balance,createdon,status,type,userid) VALUES(113,'Ellen Veras',4562.11,'05-15-2008','OPEN','CHECKING',109);
