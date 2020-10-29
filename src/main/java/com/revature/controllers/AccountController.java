@@ -51,16 +51,16 @@ public class AccountController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Account> addAccount(@RequestBody Account a){
+	public ResponseEntity<Account> addAccount(@RequestBody NewAccountDTO newacc){
 		
-		return ResponseEntity.status(HttpStatus.OK).body(accservice.addAccount(a));
+		return ResponseEntity.status(HttpStatus.OK).body(accservice.addAccount(newacc));
 		
 	}
 	
 	@PutMapping(value="/transaction")
 	public ResponseEntity<Boolean> accountTransaction(@RequestBody TransactionDTO todo){
 		
-		switch(Transaction.valueOf(todo.transtype.toUpperCase())) {
+		switch(TransactionType.valueOf(todo.transtype.toUpperCase())) {
 		
 			case WITHDRAW:
 				accservice.withdraw(todo.fromAccount, todo.amount);

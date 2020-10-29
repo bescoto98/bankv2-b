@@ -6,28 +6,29 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.models.AccStatus;
-import com.revature.models.Account;
-import com.revature.models.User;
+import com.revature.models.*;
 import com.revature.repositories.IAccountDAO;
 
 @Service
 public class AccountService {
 
 	private IAccountDAO accountdao;
+	private UserService userservice;
 
 	@Autowired
-	public AccountService(IAccountDAO accountdao) {
+	public AccountService(IAccountDAO accountdao, UserService userservice) {
 		super();
 		this.accountdao = accountdao;
+		this.userservice = userservice;
 	}
 	
-	public Account addAccount(Account a) {
+	public Account addAccount(NewAccountDTO newacc) {
 		
-		if(a.getStatus() != AccStatus.PENDING) {
-			a.setStatus(AccStatus.PENDING);
-		}
-		
+		Account a = new Account(
+						newacc.balance,
+						AccType.valueOf(newacc.type),
+						AccStatus.PENDING,
+						userservice.findByUserid(newacc.ownerid));
 		
 		return accountdao.save(a);
 	}

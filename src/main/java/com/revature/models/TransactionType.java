@@ -1,5 +1,5 @@
 package com.revature.models;
 
-public enum Transaction {
+public enum TransactionType {
 	WITHDRAW, DEPOSIT, TRANSFER
 }
