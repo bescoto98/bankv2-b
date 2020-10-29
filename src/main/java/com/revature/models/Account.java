@@ -38,7 +38,7 @@ public class Account {
 	private String approvedby;
 	private String createdon;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="userid")
 	private User owner;
 	
